@@ -1,17 +1,7 @@
 const http = require('http');
 const arch = require('process');
-const server = http.createServer((req,res) => {
-    // console.log(req.url, req.method, req.headers,req.httpVersion)
-    res.setHeader('Content-Type', 'text/html');
-    res.write(
-        `<html>
-            <head><title>First server creation</title></head>
-            <body>
-                <h1>Hello Node :)</h1>
-            </body>
-         </html>
-    `);
-    res.end();
-});
+const fs = require('fs');
+const routes = require('./routes');
+const server = http.createServer(routes.handler);
 
-server.listen(3000);
+server.listen(5000);
